@@ -1,0 +1,44 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Query {
+  film(id:ID!): Film
+  films(genre:Genre!): [Film!]
+}
+
+type Mutation {
+  upsertFilm(input: FilmInput!): Film!
+}
+
+enum Genre {
+  "Action"
+  Action
+  "Comedy"
+  Comedy
+  "Horror"
+  Horror
+  "Drama"
+  Drama
+}
+
+type Film {
+  id: ID!
+  name: String!
+  year: Int!
+  genre: Genre!
+  director: Director!
+}
+
+type Director{
+  id: ID!
+  name: String!
+}
+
+input FilmInput {
+  name: String!
+  id: String
+  year:Int!
+  genre:Genre!
+  director: String!
+}
